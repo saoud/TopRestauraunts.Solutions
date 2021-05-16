@@ -22,6 +22,7 @@ namespace TopRestaurants.Controllers
       List<Restaurant> model = _db.Restaurants.ToList();
       return View(model);
     }
+    
     public ActionResult Create()
     {
       // ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Name");
@@ -40,19 +41,32 @@ namespace TopRestaurants.Controllers
       Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
       return View(thisRestaurant);
     }
-    public ActionResult Edit(int id)
-    {
-      var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-      // ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Name");
-      return View(thisRestaurant);
-    }
-    [HttpPost]
-    public ActionResult Edit(Restaurant restaurant)
-    {
-      _db.Entry(restaurant).State = EntityState.Modified;
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-    }
-    
+    // public ActionResult Edit(int id)
+    // {
+    //   var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+    //   // ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Name");
+    //   return View(thisRestaurant);
+    // }
+    // [HttpPost]
+    // public ActionResult Edit(Restaurant restaurant)
+    // {
+    //   _db.Entry(restaurant).State = EntityState.Modified;
+    //   _db.SaveChanges();
+    //   return RedirectToAction("Index");
+    // }
+    //     public ActionResult Delete(int id)
+    // {
+    //   var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+    //   return View(thisRestaurant);
+    // }
+
+    // [HttpPost, ActionName("Delete")]
+    // public ActionResult DeleteConfirmed(int id)
+    // {
+    //   var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+    //   _db.Restaurants.Remove(thisRestaurant);
+    //   _db.SaveChanges();
+    //   return RedirectToAction("Index");
+    // }
   }
 }
