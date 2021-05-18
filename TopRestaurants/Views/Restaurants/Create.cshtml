@@ -4,11 +4,19 @@
 
 @model TopRestaurants.Models.Restaurant
 
-<h4>Add a new restaurant</h4>
+<h4>ADD A NEW RESTAURANT</h4>
+<hr />
 @using (@Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Name)
+  @Html.LabelFor(model => model.Name, "Name:")
   @Html.TextBoxFor(model => model.Name)
+  <hr />
+  @Html.LabelFor(model => model.Location, "Location: (e.g. Downtown Portland)")
+  @Html.TextBoxFor(model => model.Location)
+  <hr />
+  @Html.LabelFor(model => model.PriceRange, "Price Range: (enter price range from $ to $$$$$)")
+  @Html.TextBoxFor(model => model.PriceRange)
+  <hr />
 
   @* @Html.LabelFor(model => model.Cuisine)
   @Html.DropDownList("CuisineId") *@
