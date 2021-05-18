@@ -8,8 +8,8 @@ namespace TopRestaurants.Models
     public string PriceRange { get; set; }
     public string Location { get; set; }
 
-    // public int CuisineId { get; set; }
-    // public virtual Cuisine Cuisine { get; set; }
+    public int CuisineId { get; set; }
+    public virtual Cuisine Cuisine { get; set; }
 
   }
 }
