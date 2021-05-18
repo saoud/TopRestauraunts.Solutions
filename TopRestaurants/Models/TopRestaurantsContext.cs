@@ -5,7 +5,7 @@ namespace TopRestaurants.Models
 
   public class TopRestaurantsContext : DbContext
   {
-    // public virtual DbSet<Cuisine> Cuisines { get; set; }
+    public virtual DbSet<Cuisine> Cuisines { get; set; }
 
     public DbSet<Restaurant> Restaurants { get; set; }
 

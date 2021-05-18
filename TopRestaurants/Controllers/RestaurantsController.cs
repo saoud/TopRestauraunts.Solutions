@@ -18,14 +18,14 @@ namespace TopRestaurants.Controllers
 
     public ActionResult Index()
     {
-      // List<Restaurant> model = _db.Restaurants.Include(restaurant => restaurant.Cuisine).ToList();
+      List<Restaurant> model = _db.Restaurants.Include(restaurant => restaurant.Cuisine).ToList();
       List<Restaurant> model = _db.Restaurants.ToList();
       return View(model);
     }
     
     public ActionResult Create()
     {
-      // ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Name");
+      ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Name");
       return View();
     }
 
@@ -54,19 +54,19 @@ namespace TopRestaurants.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    //     public ActionResult Delete(int id)
-    // {
-    //   var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-    //   return View(thisRestaurant);
-    // }
+    public ActionResult Delete(int id)
+    {
+      var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+      return View(thisRestaurant);
+    }
 
-    // [HttpPost, ActionName("Delete")]
-    // public ActionResult DeleteConfirmed(int id)
-    // {
-    //   var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-    //   _db.Restaurants.Remove(thisRestaurant);
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
+      _db.Restaurants.Remove(thisRestaurant);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
